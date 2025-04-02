@@ -12,6 +12,7 @@ public class LoginPage{
     private final SelenideElement emailField = $x("//input[@name='st.email']");
     private final SelenideElement passwordField = $x("//input[@name='st.password']");
     private final SelenideElement submitButton = $x("//input[@value='Войти в Одноклассники']");
+    private final SelenideElement errorMessage = $x("//*[contains(@class, 'login_error')]");
 
     public LoginPage open(){
         Selenide.open("/");
@@ -27,5 +28,17 @@ public class LoginPage{
     public HomePage submit(){
         submitButton.click();
         return new HomePage();
+    }
+
+    public LoginPage waitForSubmit(){
+        submitButton.click();
+        return this;
+    }
+
+    public SelenideElement getError(){
+        return errorMessage;
+    }
+    public void verifyError(String error){
+        errorMessage.shouldHave(exactText(error));
     }
 }

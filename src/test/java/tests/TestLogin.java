@@ -1,5 +1,6 @@
 package tests;
 
+import static java.time.Duration.*;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,5 +16,14 @@ public class TestLogin extends BaseTest{
                 .enterEmailAndPassword(getLogin(), getPassword())
                 .submit();
         homePage.getFriendsButton().shouldBe(visible);
+    }
+
+    @Test
+    public void checkLoginWithInvalidCredentials(){
+        LoginPage loginPage = new LoginPage();
+        loginPage.open().enterEmailAndPassword("FailLogin", getPassword())
+                .waitForSubmit()
+                .getError().shouldBe(visible)
+                .shouldHave(text("Неправильно указан логин и/или пароль"));
     }
 }
