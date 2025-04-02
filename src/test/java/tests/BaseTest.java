@@ -1,9 +1,13 @@
 package tests;
 
+import com.codeborne.selenide.Selenide;
 import io.github.cdimascio.dotenv.Dotenv;
 import io.github.cdimascio.dotenv.DotenvException;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import com.codeborne.selenide.Configuration;
+import org.junit.jupiter.api.BeforeEach;
 
 public abstract class BaseTest{
     protected static final String BASE_URL = "https://ok.ru";
@@ -23,5 +27,10 @@ public abstract class BaseTest{
         if ((getLogin() == null) || (getPassword() == null)){
             throw new DotenvException("Please set OK_LOGIN and OK_PASSWORD to .env file");
         }
+    }
+
+    @AfterEach
+    public void clean(){
+        Selenide.closeWebDriver();
     }
 }

@@ -28,9 +28,4 @@ public class LoginPage{
         submitButton.click();
         return new HomePage();
     }
-
-    public LoginPage close(){
-        Selenide.closeWebDriver();
-        return this;
-    }
 }

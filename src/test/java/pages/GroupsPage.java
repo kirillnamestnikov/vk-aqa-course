@@ -13,8 +13,4 @@ public class GroupsPage {
         return createButton;
     }
 
-    public GroupsPage close(){
-        Selenide.closeWebDriver();
-        return this;
-    }
 }

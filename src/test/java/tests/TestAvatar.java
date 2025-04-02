@@ -14,6 +14,5 @@ public class TestAvatar extends BaseTest{
                 .enterEmailAndPassword(getLogin(), getPassword())
                 .submit();
         assertFalse(homePage.isAvatarAvailable(), "Avatar should be not visible");
-        homePage.close();
     }
 }

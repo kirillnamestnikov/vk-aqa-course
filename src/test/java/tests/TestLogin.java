@@ -15,6 +15,5 @@ public class TestLogin extends BaseTest{
                 .enterEmailAndPassword(getLogin(), getPassword())
                 .submit();
         homePage.getFriendsButton().shouldBe(visible);
-        homePage.close();
     }
 }

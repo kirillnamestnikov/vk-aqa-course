@@ -12,6 +12,5 @@ public class TestGroups extends BaseTest{
                 .enterEmailAndPassword(getLogin(), getPassword())
                 .submit().openGroups();
         groupsPage.getCreateButton().shouldBe(visible);
-        groupsPage.close();
     }
 }
