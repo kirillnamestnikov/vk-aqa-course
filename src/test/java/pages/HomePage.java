@@ -11,6 +11,8 @@ public class HomePage{
             " //span[text()='Друзья']/..");
     private final SelenideElement groupsButton = $x("//a[contains(@href, '/groups')] |" +
             " //span[text()='Группы']/..");
+    private final SelenideElement hobbysButton = $x("//a[contains(@href, '/hobby')] |" +
+            " //span[text()='Увлечения']/..");
 
     public boolean isAvatarAvailable(){
         return avatar.isDisplayed();
@@ -23,5 +25,10 @@ public class HomePage{
     public GroupsPage openGroups(){
         groupsButton.shouldBe(visible).click();
         return new GroupsPage();
+    }
+
+    public HobbysPage openHobbys(){
+        hobbysButton.shouldBe(visible).click();
+        return new HobbysPage();
     }
 }

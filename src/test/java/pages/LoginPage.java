@@ -38,7 +38,4 @@ public class LoginPage{
     public SelenideElement getError(){
         return errorMessage;
     }
-    public void verifyError(String error){
-        errorMessage.shouldHave(exactText(error));
-    }
 }
