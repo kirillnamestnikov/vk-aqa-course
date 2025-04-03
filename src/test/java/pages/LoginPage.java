@@ -41,8 +41,4 @@ public class LoginPage{
                 .shouldHave(text("Неправильно указан логин и/или пароль"));
         return this;
     }
-
-    public SelenideElement getError(){
-        return errorMessage;
-    }
 }

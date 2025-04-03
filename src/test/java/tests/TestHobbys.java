@@ -5,11 +5,28 @@ import pages.HobbysPage;
 import pages.HomePage;
 
 public class TestHobbys extends BaseTest{
+    private HobbysPage hobbysPage;
+
+    @BeforeEach
+    public void setupHobbyTest(){
+        hobbysPage = homePage.openHobbys();
+    }
+
     @Test
-    @DisplayName("Проверка наличия кнопки События во вкладке с увлечениями")
+    @DisplayName("Проверка наличия кнопки Мероприятия во вкладке с увлечениями")
     public void testHobbysEvents(){
-        HobbysPage hobbysPage = homePage
-                .openHobbys();
         hobbysPage.checkHobbyEvents();
+    }
+
+    @Test
+    @DisplayName("Проверка наличия кнопки Мастер-классы во вкладке с увлечениями")
+    public void testHobbysTutorials(){
+        hobbysPage.checkHobbyTutorials();
+    }
+
+    @Test
+    @DisplayName("Проверка наличия кнопки Вопросы и ответы во вкладке с увлечениями")
+    public void testHobbysQuestions(){
+        hobbysPage.checkHobbyQuestions();
     }
 }
