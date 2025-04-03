@@ -7,6 +7,7 @@ import java.time.Duration;
 
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selenide.$x;
 
 public class LoginPage{
     private final SelenideElement emailField = $x("//input[@name='st.email']");

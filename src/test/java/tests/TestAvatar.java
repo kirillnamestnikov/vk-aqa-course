@@ -1,6 +1,5 @@
 package tests;
 
-import org.junit.jupiter.api.Order;
 import pages.HomePage;
 import pages.LoginPage;
 import org.junit.jupiter.api.Test;
