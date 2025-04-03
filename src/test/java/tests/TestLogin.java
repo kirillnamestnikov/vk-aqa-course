@@ -13,6 +13,6 @@ public class TestLogin extends BaseTest{
         HomePage homePage = new LoginPage().open()
                 .enterEmailAndPassword(getLogin(), getPassword())
                 .submit();
-        homePage.getFriendsButton().shouldBe(visible);
+        homePage.checkFriends();
     }
 }

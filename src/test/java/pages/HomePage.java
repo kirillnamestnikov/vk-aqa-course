@@ -2,7 +2,7 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.*;
 
 public class HomePage{
     private final SelenideElement avatar = $x("//div[@class='toolbar_avatar']");
@@ -15,8 +15,9 @@ public class HomePage{
         return avatar.isDisplayed();
     }
 
-    public SelenideElement getFriendsButton(){
-        return friendsButton;
+    public HomePage checkFriends(){
+        friendsButton.shouldBe(visible).shouldHave(text("Друзья"));
+        return this;
     }
 
     public GroupsPage openGroups(){

@@ -11,6 +11,6 @@ public class TestGroups extends BaseTest{
         GroupsPage groupsPage = new LoginPage().open()
                 .enterEmailAndPassword(getLogin(), getPassword())
                 .submit().openGroups();
-        groupsPage.getCreateButton().shouldBe(visible);
+        groupsPage.checkOfficialGroups();
     }
 }
