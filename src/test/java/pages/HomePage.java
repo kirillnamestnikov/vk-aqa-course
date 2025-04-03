@@ -17,6 +17,8 @@ public class HomePage{
         return avatar.isDisplayed();
     }
 
+
+
     public HomePage checkFriends(){
         friendsButton.shouldBe(visible.because("На главной странице должна быть кнопка Друзья"))
                 .shouldHave(text("Друзья"));
