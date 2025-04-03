@@ -8,7 +8,8 @@ public class HobbysPage {
     private final SelenideElement hobbyEventsButton = $x("//a[contains(@href, '/hobby/events')]");
 
     public HobbysPage checkHobbyEvents(){
-        hobbyEventsButton.shouldBe(visible).shouldHave(text("Мероприятия"));
+        hobbyEventsButton.shouldBe(visible.because("На странице с увлечениями должна быть кнопка Мероприятия"))
+                .shouldHave(text("Мероприятия"));
         return this;
     }
 }

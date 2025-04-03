@@ -1,16 +1,14 @@
 package tests;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import pages.GroupsPage;
 import pages.LoginPage;
-import static com.codeborne.selenide.Condition.*;
 
 public class TestGroups extends BaseTest{
     @Test
+    @DisplayName("Проверка открытия вкладки с группами")
     public void testGroup(){
-        GroupsPage groupsPage = new LoginPage().open()
-                .enterEmailAndPassword(getLogin(), getPassword())
-                .submit().openGroups();
-        groupsPage.getCreateButton().shouldBe(visible);
+        GroupsPage groupsPage = homePage.openGroups();
+        groupsPage.checkOfficialGroups();
     }
 }

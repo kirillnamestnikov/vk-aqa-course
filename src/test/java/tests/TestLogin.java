@@ -1,8 +1,6 @@
 package tests;
 
-import static java.time.Duration.*;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static com.codeborne.selenide.Condition.*;
 import pages.HomePage;
@@ -11,14 +9,16 @@ import pages.LoginPage;
 public class TestLogin extends BaseTest{
 
     @Test
+    @DisplayName("Проверка на успешный логин с правильными данными")
     public void checkLoginWithValidCredentials(){
         HomePage homePage = new LoginPage().open()
                 .enterEmailAndPassword(getLogin(), getPassword())
                 .submit();
-        homePage.getFriendsButton().shouldBe(visible);
+        homePage.checkFriends();
     }
 
     @Test
+    @DisplayName("Проверка на неуспешный логин с неправильными данными")
     public void checkLoginWithInvalidCredentials(){
         LoginPage loginPage = new LoginPage();
         loginPage.open().enterEmailAndPassword("FailLogin", getPassword())

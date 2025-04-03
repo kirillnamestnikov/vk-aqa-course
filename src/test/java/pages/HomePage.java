@@ -1,9 +1,8 @@
 package pages;
 
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
-import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selenide.*;
 
 public class HomePage{
     private final SelenideElement avatar = $x("//div[@class='toolbar_avatar']");
@@ -18,17 +17,21 @@ public class HomePage{
         return avatar.isDisplayed();
     }
 
-    public SelenideElement getFriendsButton(){
-        return friendsButton;
+    public HomePage checkFriends(){
+        friendsButton.shouldBe(visible.because("На главной странице должна быть кнопка Друзья"))
+                .shouldHave(text("Друзья"));
+        return this;
     }
 
     public GroupsPage openGroups(){
-        groupsButton.shouldBe(visible).click();
+        groupsButton.shouldBe(visible.because("На главной странице должна быть кнопка Группы"))
+                .click();
         return new GroupsPage();
     }
 
     public HobbysPage openHobbys(){
-        hobbysButton.shouldBe(visible).click();
+        hobbysButton.shouldBe(visible.because("На главной странице должна быть кнопка Увлечения"))
+                .click();
         return new HobbysPage();
     }
 }
