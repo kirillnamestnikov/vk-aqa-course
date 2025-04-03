@@ -16,12 +16,14 @@ public class HomePage{
     }
 
     public HomePage checkFriends(){
-        friendsButton.shouldBe(visible).shouldHave(text("Друзья"));
+        friendsButton.shouldBe(visible.because("На главной странице должна быть кнопка Друзья"))
+                .shouldHave(text("Друзья"));
         return this;
     }
 
     public GroupsPage openGroups(){
-        groupsButton.shouldBe(visible).click();
+        groupsButton.shouldBe(visible.because("На главной странице должна быть кнопка Группы"))
+                .click();
         return new GroupsPage();
     }
 }

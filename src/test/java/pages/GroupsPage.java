@@ -10,7 +10,8 @@ public class GroupsPage {
             " //span[text()='Официальные']/..");
 
     public GroupsPage checkOfficialGroups(){
-        officialButton.shouldBe(visible).shouldHave(text("Официальные"));
+        officialButton.shouldBe(visible.because("На странице с группами должна быть раздел Официальные"))
+                .shouldHave(text("Официальные"));
         return this;
     }
 }

@@ -20,13 +20,16 @@ public class LoginPage{
     }
 
     public LoginPage enterEmailAndPassword(String email, String password){
-        emailField.setValue(email);
-        passwordField.setValue(password);
+        emailField.shouldBe(visible.because("На странице логина должно быть поле с вводом логина"))
+                .setValue(email);
+        passwordField.shouldBe(visible.because("На странице логина должно быть поле с вводом пароля"))
+                .setValue(password);
         return this;
     }
 
     public HomePage submit(){
-        submitButton.click();
+        submitButton.shouldBe(visible.because("На странице логина должно быть кнопка для отправки формы"))
+                .click();
         return new HomePage();
     }
 }
