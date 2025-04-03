@@ -20,11 +20,6 @@ public class HomePage{
         return friendsButton;
     }
 
-    public HomePage close(){
-        Selenide.closeWebDriver();
-        return this;
-    }
-
     public GroupsPage openGroups(){
         groupsButton.shouldBe(visible).click();
         return new GroupsPage();

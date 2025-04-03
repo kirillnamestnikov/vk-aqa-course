@@ -2,7 +2,9 @@ package tests;
 
 import io.github.cdimascio.dotenv.Dotenv;
 import io.github.cdimascio.dotenv.DotenvException;
+import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.AfterEach;
 import com.codeborne.selenide.Configuration;
 
 public abstract class BaseTest{
@@ -23,5 +25,10 @@ public abstract class BaseTest{
         if ((getLogin() == null) || (getPassword() == null)){
             throw new DotenvException("Please set OK_LOGIN and OK_PASSWORD to .env file");
         }
+    }
+
+    @AfterEach
+    public void clean(){
+        Selenide.closeWebDriver();
     }
 }
