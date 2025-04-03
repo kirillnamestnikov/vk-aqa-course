@@ -2,16 +2,14 @@ package tests;
 
 import pages.HomePage;
 import pages.LoginPage;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 
 public class TestAvatar extends BaseTest{
     @Test
+    @DisplayName("Проверка на отсутствие аватара у профиля")
     public void testIfAvatarNotVisible(){
-        HomePage homePage = new LoginPage().open()
-                .enterEmailAndPassword(getLogin(), getPassword())
-                .submit();
         assertFalse(homePage.isAvatarAvailable(), "Avatar should be not visible");
     }
 }
