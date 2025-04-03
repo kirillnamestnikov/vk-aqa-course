@@ -22,8 +22,6 @@ public class TestLogin extends BaseTest{
     public void checkLoginWithInvalidCredentials(){
         LoginPage loginPage = new LoginPage();
         loginPage.open().enterEmailAndPassword("FailLogin", getPassword())
-                .waitForSubmit()
-                .getError().shouldBe(visible)
-                .shouldHave(text("Неправильно указан логин и/или пароль"));
+                .waitForSubmit().checkErrorMessage();
     }
 }

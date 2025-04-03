@@ -2,9 +2,6 @@ package pages;
 
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
-
-import java.time.Duration;
-
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Condition.*;
 
@@ -35,6 +32,13 @@ public class LoginPage{
 
     public LoginPage waitForSubmit(){
         submitButton.click();
+        return this;
+    }
+
+    public LoginPage checkErrorMessage(){
+        errorMessage.shouldBe(visible
+                .because("На странице логина при неправильном логине или пароле должно выводится сообщение об ошибке"))
+                .shouldHave(text("Неправильно указан логин и/или пароль"));
         return this;
     }
 
