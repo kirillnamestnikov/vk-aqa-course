@@ -12,12 +12,12 @@ public class HomePage{
             " //span[text()='Группы']/..");
     private final SelenideElement hobbysButton = $x("//a[contains(@href, '/hobby')] |" +
             " //span[text()='Увлечения']/..");
+    private final SelenideElement gamesButton = $x("//a[contains(@href, '/vitrine')] |" +
+            " //span[text()='Игры']/..");
 
     public boolean isAvatarAvailable(){
         return avatar.isDisplayed();
     }
-
-
 
     public HomePage checkFriends(){
         friendsButton.shouldBe(visible.because("На главной странице должна быть кнопка Друзья"))
@@ -35,5 +35,11 @@ public class HomePage{
         hobbysButton.shouldBe(visible.because("На главной странице должна быть кнопка Увлечения"))
                 .click();
         return new HobbysPage();
+    }
+
+    public GamesPage openGames(){
+        gamesButton.shouldBe(visible.because("На главной странице должна быть кнопка Игры"))
+                .click();
+        return new GamesPage();
     }
 }
