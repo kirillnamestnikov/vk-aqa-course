@@ -7,10 +7,12 @@ import com.codeborne.selenide.Selenide;
 import constants.LoginConstants;
 import pages.HomePage;
 import pages.LoginPage;
+import tags.LoginTag;
 
 public class TestLogin extends BaseTest{
 
     @Test
+    @LoginTag
     @DisplayName("Проверка на успешный логин с правильными данными")
     public void checkLoginWithValidCredentials(){
         HomePage homePage = new LoginPage().open()
@@ -24,6 +26,7 @@ public class TestLogin extends BaseTest{
     class InvalidTestLogin{
 
         @Test
+        @LoginTag
         @DisplayName("Проверка на неуспешный логин с неправильными данными")
         public void checkLoginWithInvalidCredentials(){
             LoginPage loginPage = new LoginPage();
@@ -32,6 +35,7 @@ public class TestLogin extends BaseTest{
         }
 
         @Test
+        @LoginTag
         @DisplayName("Проверка на неуспешный логин с неправильным логином")
         public void checkLoginWithInvalidLogin(){
             LoginPage loginPage = new LoginPage();
@@ -40,6 +44,7 @@ public class TestLogin extends BaseTest{
         }
 
         @Test
+        @LoginTag
         @DisplayName("Проверка на неуспешный логин с неправильным паролем")
         public void checkLoginWithInvalidPassword(){
             LoginPage loginPage = new LoginPage();
@@ -48,6 +53,7 @@ public class TestLogin extends BaseTest{
         }
 
         @Test
+        @LoginTag
         @DisplayName("Проверка на неуспешный логин с пустыми данными")
         public void checkLoginWithEmptyCredentials(){
             LoginPage loginPage = new LoginPage();
@@ -56,6 +62,7 @@ public class TestLogin extends BaseTest{
         }
 
         @Test
+        @LoginTag
         @DisplayName("Проверка на неуспешный логин с пустым логином")
         public void checkLoginWithEmptyLogin(){
             LoginPage loginPage = new LoginPage();
@@ -64,6 +71,7 @@ public class TestLogin extends BaseTest{
         }
 
         @Test
+        @LoginTag
         @DisplayName("Проверка на неуспешный логин с пустым паролем")
         public void checkLoginWithEmptyPassword(){
             LoginPage loginPage = new LoginPage();
