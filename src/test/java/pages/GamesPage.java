@@ -17,7 +17,9 @@ public class GamesPage {
 
     public int getGamesListSize(){
         gamesList.shouldBe(CollectionCondition.sizeGreaterThan(0));
-        return gamesList.filterBy(visible).size();
+        return gamesList.filterBy(visible
+                .because("На списке с играми должны отображаться игры"))
+                .size();
     }
 
 }
