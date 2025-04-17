@@ -1,8 +1,11 @@
 package tests;
 
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import static org.junit.jupiter.api.Assertions.*;
+import constants.GameGenresRegistry;
 import tags.GamesTag;
 import pages.GamesPage;
 
@@ -19,5 +22,32 @@ public class TestGames extends BaseTest{
                         String.format("Число игр должно быть больше %d",
                                 count))
         );
+    }
+
+    @Test
+    @DisplayName("Проверка отображения названия жанра 'Казуальные' на странице с играми")
+    @GamesTag
+    public void testCasualGames(){
+        String expectedGenre = GameGenresRegistry.getGenre("CASUAL");
+        GamesPage gamesPage = homePage.openGames();
+        gamesPage.openCasual().checkGenreTitle(expectedGenre);
+    }
+
+    @Test
+    @DisplayName("Проверка отображения названия жанра 'Три в ряд' на странице с играми")
+    @GamesTag
+    public void testMatch3Games(){
+        String expectedGenre = GameGenresRegistry.getGenre("MATCH3");
+        GamesPage gamesPage = homePage.openGames();
+        gamesPage.openMatch3().checkGenreTitle(expectedGenre);
+    }
+
+    @Test
+    @DisplayName("Проверка отображения названия жанра 'Фермы' на странице с играми")
+    @GamesTag
+    public void testFarmGames(){
+        String expectedGenre = GameGenresRegistry.getGenre("FARM");
+        GamesPage gamesPage = homePage.openGames();
+        gamesPage.openFarm().checkGenreTitle(expectedGenre);
     }
 }
