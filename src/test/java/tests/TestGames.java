@@ -1,5 +1,6 @@
 package tests;
 
+import elements.GameCard;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -8,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import constants.GameGenresRegistry;
 import tags.GamesTag;
 import pages.GamesPage;
+import java.util.List;
 
 public class TestGames extends BaseTest{
     @ParameterizedTest(name = "Проверка положительного количества карточек с играми")
@@ -49,5 +51,15 @@ public class TestGames extends BaseTest{
         String expectedGenre = GameGenresRegistry.getGenre("FARM");
         GamesPage gamesPage = homePage.openGames();
         gamesPage.openFarm().checkGenreTitle(expectedGenre);
+    }
+
+    @Test
+    @DisplayName("Проверка видимости всех карточек с играми на странице")
+    @GamesTag
+    public void testAllGamesAreVisible(){
+        GamesPage gamesPage = homePage.openGames();
+        List<GameCard> cards = gamesPage.getGameCards();
+        cards.forEach(card
+        -> assertTrue(card.isVisible(), "Карточка должна быть видимой"));
     }
 }

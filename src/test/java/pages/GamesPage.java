@@ -1,9 +1,13 @@
 package pages;
 
 import static com.codeborne.selenide.Selenide.*;
+
+import java.util.ArrayList;
+import java.util.List;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.SelenideElement;
+import elements.GameCard;
 
 import static com.codeborne.selenide.Condition.*;
 
@@ -16,7 +20,7 @@ public class GamesPage {
 
     public GamesPage checkGamesCard(){
         gamesList.first().shouldBe(visible
-                .because("На карточке с игрой должна отображаться соответствующая информация"));
+                .because("Карточка с игрой должна быть видимой"));
         return this;
     }
 
@@ -25,6 +29,14 @@ public class GamesPage {
         return gamesList.filterBy(visible
                 .because("На списке с играми должны отображаться игры"))
                 .size();
+    }
+
+    public List<GameCard> getGameCards(){
+        List<GameCard> cards = new ArrayList<>();
+        for (SelenideElement element : gamesList){
+            cards.add(new GameCard(element));
+        }
+        return cards;
     }
 
     public GamesPage openCasual(){
