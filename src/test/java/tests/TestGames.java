@@ -5,7 +5,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.junit.jupiter.api.Assertions.*;
 import tags.GamesTag;
 import pages.GamesPage;
-import pages.HomePage;
 
 public class TestGames extends BaseTest{
     @ParameterizedTest(name = "Проверка положительного количества карточек с играми")

@@ -1,9 +1,6 @@
 package tests;
 
 import org.junit.jupiter.api.*;
-import static org.junit.jupiter.api.Assertions.*;
-import static com.codeborne.selenide.Condition.*;
-import com.codeborne.selenide.Selenide;
 import constants.LoginConstants;
 import pages.HomePage;
 import pages.LoginPage;
@@ -15,7 +12,7 @@ public class TestLogin extends BaseTest{
     @LoginTag
     @DisplayName("Проверка на успешный логин с правильными данными")
     public void checkLoginWithValidCredentials(){
-        HomePage homePage = new LoginPage().open()
+        HomePage homePage = new LoginPage()
                 .enterEmailAndPassword(getLogin(), getPassword())
                 .submit();
         homePage.checkFriends();
@@ -30,8 +27,8 @@ public class TestLogin extends BaseTest{
         @DisplayName("Проверка на неуспешный логин с неправильными данными")
         public void checkLoginWithInvalidCredentials(){
             LoginPage loginPage = new LoginPage();
-            loginPage.open().enterEmailAndPassword(LoginConstants.failLogin, LoginConstants.failPassword)
-                    .waitForSubmit().checkErrorMessage();
+            loginPage.enterEmailAndPassword(LoginConstants.failLogin, LoginConstants.failPassword)
+                    .submitWithError().checkErrorMessage();
         }
 
         @Test
@@ -39,8 +36,8 @@ public class TestLogin extends BaseTest{
         @DisplayName("Проверка на неуспешный логин с неправильным логином")
         public void checkLoginWithInvalidLogin(){
             LoginPage loginPage = new LoginPage();
-            loginPage.open().enterEmailAndPassword(LoginConstants.failLogin, getPassword())
-                    .waitForSubmit().checkErrorMessage();
+            loginPage.enterEmailAndPassword(LoginConstants.failLogin, getPassword())
+                    .submitWithError().checkErrorMessage();
         }
 
         @Test
@@ -48,8 +45,8 @@ public class TestLogin extends BaseTest{
         @DisplayName("Проверка на неуспешный логин с неправильным паролем")
         public void checkLoginWithInvalidPassword(){
             LoginPage loginPage = new LoginPage();
-            loginPage.open().enterEmailAndPassword(getLogin(), LoginConstants.failPassword)
-                    .waitForSubmit().checkErrorMessage();
+            loginPage.enterEmailAndPassword(getLogin(), LoginConstants.failPassword)
+                    .submitWithError().checkErrorMessage();
         }
 
         @Test
@@ -57,8 +54,8 @@ public class TestLogin extends BaseTest{
         @DisplayName("Проверка на неуспешный логин с пустыми данными")
         public void checkLoginWithEmptyCredentials(){
             LoginPage loginPage = new LoginPage();
-            loginPage.open().enterEmailAndPassword(LoginConstants.emptyLogin, LoginConstants.emptyPassword)
-                    .waitForSubmit().checkErrorMessage();
+            loginPage.enterEmailAndPassword(LoginConstants.emptyLogin, LoginConstants.emptyPassword)
+                    .submitWithError().checkErrorMessage();
         }
 
         @Test
@@ -66,8 +63,8 @@ public class TestLogin extends BaseTest{
         @DisplayName("Проверка на неуспешный логин с пустым логином")
         public void checkLoginWithEmptyLogin(){
             LoginPage loginPage = new LoginPage();
-            loginPage.open().enterEmailAndPassword(LoginConstants.emptyLogin, getPassword())
-                    .waitForSubmit().checkErrorMessage();
+            loginPage.enterEmailAndPassword(LoginConstants.emptyLogin, getPassword())
+                    .submitWithError().checkErrorMessage();
         }
 
         @Test
@@ -75,8 +72,8 @@ public class TestLogin extends BaseTest{
         @DisplayName("Проверка на неуспешный логин с пустым паролем")
         public void checkLoginWithEmptyPassword(){
             LoginPage loginPage = new LoginPage();
-            loginPage.open().enterEmailAndPassword(getLogin(), LoginConstants.emptyPassword)
-                    .waitForSubmit().checkErrorMessage();
+            loginPage.enterEmailAndPassword(getLogin(), LoginConstants.emptyPassword)
+                    .submitWithError().checkErrorMessage();
         }
 
     }

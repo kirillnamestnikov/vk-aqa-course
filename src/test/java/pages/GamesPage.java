@@ -3,7 +3,6 @@ package pages;
 import static com.codeborne.selenide.Selenide.*;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.CollectionCondition;
-import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Condition.*;
 
 public class GamesPage {

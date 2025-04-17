@@ -4,24 +4,33 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Condition.*;
-import com.codeborne.selenide.Condition;
+import org.openqa.selenium.support.ui.LoadableComponent;
 
-public class LoginPage{
+
+public class LoginPage extends LoadableComponent< LoginPage > {
     private final SelenideElement emailField = $x("//input[@name='st.email']");
     private final SelenideElement passwordField = $x("//input[@name='st.password']");
     private final SelenideElement submitButton = $x("//input[@value='Войти в Одноклассники']");
     private final SelenideElement errorMessage = $x("//*[contains(@class, 'login_error')]");
 
-    public LoginPage open(){
+    public LoginPage(){
         Selenide.open("/");
-        return this;
+    }
+
+    @Override
+    protected void load(){
+        Selenide.open("/");
+    }
+
+    @Override
+    protected void isLoaded() throws Error{
+        emailField.shouldBe(visible.because("На странице логина должно быть поле с вводом логина"));
+        passwordField.shouldBe(visible.because("На странице логина должно быть поле с вводом пароля"));
     }
 
     public LoginPage enterEmailAndPassword(String email, String password){
-        emailField.shouldBe(visible.because("На странице логина должно быть поле с вводом логина"))
-                .setValue(email);
-        passwordField.shouldBe(visible.because("На странице логина должно быть поле с вводом пароля"))
-                .setValue(password);
+        emailField.setValue(email);
+        passwordField.setValue(password);
         return this;
     }
 
@@ -31,7 +40,7 @@ public class LoginPage{
         return new HomePage();
     }
 
-    public LoginPage waitForSubmit(){
+    public LoginPage submitWithError(){
         submitButton.click();
         return this;
     }

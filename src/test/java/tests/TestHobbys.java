@@ -2,7 +2,6 @@ package tests;
 
 import org.junit.jupiter.api.*;
 import pages.HobbysPage;
-import pages.HomePage;
 import tags.HobbysTag;
 
 public class TestHobbys extends BaseTest{

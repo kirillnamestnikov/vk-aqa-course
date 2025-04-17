@@ -33,7 +33,7 @@ public abstract class BaseTest{
         && (!info.getDisplayName().equals("Проверка на неуспешный логин с пустыми данными"))
         && (!info.getDisplayName().equals("Проверка на неуспешный логин с пустым логином"))
         && (!info.getDisplayName().equals("Проверка на неуспешный логин с пустым паролем"))){
-            homePage = new LoginPage().open()
+            homePage = new LoginPage()
                     .enterEmailAndPassword(getLogin(), getPassword())
                     .submit();
         }
