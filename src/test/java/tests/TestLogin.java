@@ -27,7 +27,7 @@ public class TestLogin extends BaseTest{
         @DisplayName("Проверка на неуспешный логин с неправильными данными")
         public void checkLoginWithInvalidCredentials(){
             LoginPage loginPage = new LoginPage();
-            loginPage.open().enterEmailAndPassword(LoginConstants.failLogin, LoginConstants.failPassword)
+            loginPage.open().enterEmailAndPassword(getFailLogin(), getFailPassword())
                     .submitWithError().checkErrorMessage();
         }
 
@@ -36,7 +36,7 @@ public class TestLogin extends BaseTest{
         @DisplayName("Проверка на неуспешный логин с неправильным логином")
         public void checkLoginWithInvalidLogin(){
             LoginPage loginPage = new LoginPage();
-            loginPage.open().enterEmailAndPassword(LoginConstants.failLogin, getPassword())
+            loginPage.open().enterEmailAndPassword(getFailLogin(), getPassword())
                     .submitWithError().checkErrorMessage();
         }
 
@@ -45,7 +45,7 @@ public class TestLogin extends BaseTest{
         @DisplayName("Проверка на неуспешный логин с неправильным паролем")
         public void checkLoginWithInvalidPassword(){
             LoginPage loginPage = new LoginPage();
-            loginPage.open().enterEmailAndPassword(getLogin(), LoginConstants.failPassword)
+            loginPage.open().enterEmailAndPassword(getLogin(), getFailPassword())
                     .submitWithError().checkErrorMessage();
         }
 
@@ -54,7 +54,7 @@ public class TestLogin extends BaseTest{
         @DisplayName("Проверка на неуспешный логин с пустыми данными")
         public void checkLoginWithEmptyCredentials(){
             LoginPage loginPage = new LoginPage();
-            loginPage.open().enterEmailAndPassword(LoginConstants.emptyLogin, LoginConstants.emptyPassword)
+            loginPage.open().enterEmailAndPassword(getEmptyLogin(), getEmptyLogin())
                     .submitWithError().checkErrorMessage();
         }
 
@@ -63,7 +63,7 @@ public class TestLogin extends BaseTest{
         @DisplayName("Проверка на неуспешный логин с пустым логином")
         public void checkLoginWithEmptyLogin(){
             LoginPage loginPage = new LoginPage();
-            loginPage.open().enterEmailAndPassword(LoginConstants.emptyLogin, getPassword())
+            loginPage.open().enterEmailAndPassword(getEmptyLogin(), getPassword())
                     .submitWithError().checkErrorMessage();
         }
 
@@ -72,7 +72,7 @@ public class TestLogin extends BaseTest{
         @DisplayName("Проверка на неуспешный логин с пустым паролем")
         public void checkLoginWithEmptyPassword(){
             LoginPage loginPage = new LoginPage();
-            loginPage.open().enterEmailAndPassword(getLogin(), LoginConstants.emptyPassword)
+            loginPage.open().enterEmailAndPassword(getLogin(), getEmptyPassword())
                     .submitWithError().checkErrorMessage();
         }
     }

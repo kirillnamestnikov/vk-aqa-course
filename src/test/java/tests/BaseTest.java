@@ -17,6 +17,18 @@ public abstract class BaseTest{
     protected static String getLogin(){
         return DOT_ENV.get("OK_LOGIN", System.getenv("OK_LOGIN"));
     }
+    protected static String getEmptyLogin(){
+        return "";
+    }
+    protected static String getEmptyPassword(){
+        return "";
+    }
+    protected static String getFailLogin(){
+        return "FailLogin";
+    }
+    protected static String getFailPassword(){
+        return "FailPassword";
+    }
 
     @BeforeAll
     public static void setup(){
