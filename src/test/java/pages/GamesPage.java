@@ -11,13 +11,16 @@ public class GamesPage {
 
     public GamesPage checkGamesCard(){
         gamesList.first().shouldBe(visible
-                .because("На карточке с игрой должна отображаться соответствующая информация"));
+                .because("Карточка с игрой должна быть видимой"));
         return this;
     }
 
     public int getGamesListSize(){
-        gamesList.shouldBe(CollectionCondition.sizeGreaterThan(0));
-        return gamesList.filterBy(visible).size();
+        gamesList.shouldBe(CollectionCondition.sizeGreaterThan(0)
+                .because("Количество игр должно быть больше 0"));
+        return gamesList.filterBy(visible
+                .because("На странице с играми должны отображаться игры"))
+                .size();
     }
 
 }
