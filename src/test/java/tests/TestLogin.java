@@ -1,9 +1,6 @@
 package tests;
 
 import org.junit.jupiter.api.*;
-import static org.junit.jupiter.api.Assertions.*;
-import static com.codeborne.selenide.Condition.*;
-import com.codeborne.selenide.Selenide;
 import constants.LoginConstants;
 import pages.HomePage;
 import pages.LoginPage;
@@ -31,7 +28,7 @@ public class TestLogin extends BaseTest{
         public void checkLoginWithInvalidCredentials(){
             LoginPage loginPage = new LoginPage();
             loginPage.open().enterEmailAndPassword(LoginConstants.failLogin, LoginConstants.failPassword)
-                    .waitForSubmit().checkErrorMessage();
+                    .submitWithError().checkErrorMessage();
         }
 
         @Test
@@ -40,7 +37,7 @@ public class TestLogin extends BaseTest{
         public void checkLoginWithInvalidLogin(){
             LoginPage loginPage = new LoginPage();
             loginPage.open().enterEmailAndPassword(LoginConstants.failLogin, getPassword())
-                    .waitForSubmit().checkErrorMessage();
+                    .submitWithError().checkErrorMessage();
         }
 
         @Test
@@ -49,7 +46,7 @@ public class TestLogin extends BaseTest{
         public void checkLoginWithInvalidPassword(){
             LoginPage loginPage = new LoginPage();
             loginPage.open().enterEmailAndPassword(getLogin(), LoginConstants.failPassword)
-                    .waitForSubmit().checkErrorMessage();
+                    .submitWithError().checkErrorMessage();
         }
 
         @Test
@@ -58,7 +55,7 @@ public class TestLogin extends BaseTest{
         public void checkLoginWithEmptyCredentials(){
             LoginPage loginPage = new LoginPage();
             loginPage.open().enterEmailAndPassword(LoginConstants.emptyLogin, LoginConstants.emptyPassword)
-                    .waitForSubmit().checkErrorMessage();
+                    .submitWithError().checkErrorMessage();
         }
 
         @Test
@@ -67,7 +64,7 @@ public class TestLogin extends BaseTest{
         public void checkLoginWithEmptyLogin(){
             LoginPage loginPage = new LoginPage();
             loginPage.open().enterEmailAndPassword(LoginConstants.emptyLogin, getPassword())
-                    .waitForSubmit().checkErrorMessage();
+                    .submitWithError().checkErrorMessage();
         }
 
         @Test
@@ -76,8 +73,7 @@ public class TestLogin extends BaseTest{
         public void checkLoginWithEmptyPassword(){
             LoginPage loginPage = new LoginPage();
             loginPage.open().enterEmailAndPassword(getLogin(), LoginConstants.emptyPassword)
-                    .waitForSubmit().checkErrorMessage();
+                    .submitWithError().checkErrorMessage();
         }
-
     }
 }

@@ -31,7 +31,7 @@ public class LoginPage{
         return new HomePage();
     }
 
-    public LoginPage waitForSubmit(){
+    public LoginPage submitWithError(){
         submitButton.click();
         return this;
     }
