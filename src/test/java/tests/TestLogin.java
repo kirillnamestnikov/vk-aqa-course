@@ -1,10 +1,6 @@
 package tests;
 
 import org.junit.jupiter.api.*;
-import static org.junit.jupiter.api.Assertions.*;
-import static com.codeborne.selenide.Condition.*;
-import com.codeborne.selenide.Selenide;
-import constants.LoginConstants;
 import pages.HomePage;
 import pages.LoginPage;
 import tags.LoginTag;
@@ -30,8 +26,8 @@ public class TestLogin extends BaseTest{
         @DisplayName("Проверка на неуспешный логин с неправильными данными")
         public void checkLoginWithInvalidCredentials(){
             LoginPage loginPage = new LoginPage();
-            loginPage.open().enterEmailAndPassword(LoginConstants.failLogin, LoginConstants.failPassword)
-                    .waitForSubmit().checkErrorMessage();
+            loginPage.open().enterEmailAndPassword(getFailLogin(), getFailPassword())
+                    .submitWithError().checkErrorMessage();
         }
 
         @Test
@@ -39,8 +35,8 @@ public class TestLogin extends BaseTest{
         @DisplayName("Проверка на неуспешный логин с неправильным логином")
         public void checkLoginWithInvalidLogin(){
             LoginPage loginPage = new LoginPage();
-            loginPage.open().enterEmailAndPassword(LoginConstants.failLogin, getPassword())
-                    .waitForSubmit().checkErrorMessage();
+            loginPage.open().enterEmailAndPassword(getFailLogin(), getPassword())
+                    .submitWithError().checkErrorMessage();
         }
 
         @Test
@@ -48,8 +44,8 @@ public class TestLogin extends BaseTest{
         @DisplayName("Проверка на неуспешный логин с неправильным паролем")
         public void checkLoginWithInvalidPassword(){
             LoginPage loginPage = new LoginPage();
-            loginPage.open().enterEmailAndPassword(getLogin(), LoginConstants.failPassword)
-                    .waitForSubmit().checkErrorMessage();
+            loginPage.open().enterEmailAndPassword(getLogin(), getFailPassword())
+                    .submitWithError().checkErrorMessage();
         }
 
         @Test
@@ -57,8 +53,8 @@ public class TestLogin extends BaseTest{
         @DisplayName("Проверка на неуспешный логин с пустыми данными")
         public void checkLoginWithEmptyCredentials(){
             LoginPage loginPage = new LoginPage();
-            loginPage.open().enterEmailAndPassword(LoginConstants.emptyLogin, LoginConstants.emptyPassword)
-                    .waitForSubmit().checkErrorMessage();
+            loginPage.open().enterEmailAndPassword(getEmptyLogin(), getEmptyLogin())
+                    .submitWithError().checkErrorMessage();
         }
 
         @Test
@@ -66,8 +62,8 @@ public class TestLogin extends BaseTest{
         @DisplayName("Проверка на неуспешный логин с пустым логином")
         public void checkLoginWithEmptyLogin(){
             LoginPage loginPage = new LoginPage();
-            loginPage.open().enterEmailAndPassword(LoginConstants.emptyLogin, getPassword())
-                    .waitForSubmit().checkErrorMessage();
+            loginPage.open().enterEmailAndPassword(getEmptyLogin(), getPassword())
+                    .submitWithError().checkErrorMessage();
         }
 
         @Test
@@ -75,9 +71,8 @@ public class TestLogin extends BaseTest{
         @DisplayName("Проверка на неуспешный логин с пустым паролем")
         public void checkLoginWithEmptyPassword(){
             LoginPage loginPage = new LoginPage();
-            loginPage.open().enterEmailAndPassword(getLogin(), LoginConstants.emptyPassword)
-                    .waitForSubmit().checkErrorMessage();
+            loginPage.open().enterEmailAndPassword(getLogin(), getEmptyPassword())
+                    .submitWithError().checkErrorMessage();
         }
-
     }
 }

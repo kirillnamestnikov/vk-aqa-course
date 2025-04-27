@@ -10,7 +10,7 @@ public class HomePage{
             " //span[text()='Друзья']/..");
     private final SelenideElement groupsButton = $x("//a[contains(@href, '/groups')] |" +
             " //span[text()='Группы']/..");
-    private final SelenideElement hobbysButton = $x("//a[contains(@href, '/hobby')] |" +
+    private final SelenideElement hobbysButton = $x("//a[@href='/hobby'] |" +
             " //span[text()='Увлечения']/..");
     private final SelenideElement gamesButton = $x("//a[contains(@href, '/vitrine')] |" +
             " //span[text()='Игры']/..");
