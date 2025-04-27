@@ -1,7 +1,6 @@
 package tests;
 
 import org.junit.jupiter.api.*;
-import constants.LoginConstants;
 import pages.HomePage;
 import pages.LoginPage;
 import tags.LoginTag;

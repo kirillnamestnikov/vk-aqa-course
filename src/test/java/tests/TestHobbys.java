@@ -2,13 +2,17 @@ package tests;
 
 import org.junit.jupiter.api.*;
 import pages.HobbysPage;
+import pages.LoginPage;
 import tags.HobbysTag;
 
 public class TestHobbys extends BaseTest{
     private HobbysPage hobbysPage;
 
     @BeforeEach
-    public void setupHobbyTest(){
+    public void setupTest(TestInfo info){
+        homePage = new LoginPage().open()
+                .enterEmailAndPassword(getLogin(), getPassword())
+                .submit();
         hobbysPage = homePage.openHobbys();
     }
 

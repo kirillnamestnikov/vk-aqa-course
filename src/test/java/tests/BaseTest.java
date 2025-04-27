@@ -1,7 +1,6 @@
 package tests;
 
 import pages.HomePage;
-import pages.LoginPage;
 import io.github.cdimascio.dotenv.Dotenv;
 import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.*;
@@ -34,21 +33,6 @@ public abstract class BaseTest{
     public static void setup(){
         Configuration.baseUrl = BASE_URL;
         Configuration.browser = "chrome";
-    }
-
-    @BeforeEach
-    public void setupTest(TestInfo info){
-        if ((!info.getDisplayName().equals("Проверка на успешный логин с правильными данными"))
-        && (!info.getDisplayName().equals("Проверка на неуспешный логин с неправильными данными"))
-        && (!info.getDisplayName().equals("Проверка на неуспешный логин с неправильным логином"))
-        && (!info.getDisplayName().equals("Проверка на неуспешный логин с неправильным паролем"))
-        && (!info.getDisplayName().equals("Проверка на неуспешный логин с пустыми данными"))
-        && (!info.getDisplayName().equals("Проверка на неуспешный логин с пустым логином"))
-        && (!info.getDisplayName().equals("Проверка на неуспешный логин с пустым паролем"))){
-            homePage = new LoginPage().open()
-                    .enterEmailAndPassword(getLogin(), getPassword())
-                    .submit();
-        }
     }
 
     @AfterEach
