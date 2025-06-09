@@ -26,8 +26,19 @@ public abstract class BaseTest{
 
     @BeforeEach
     public void setupTest(TestInfo info){
+<<<<<<< HEAD
         if (!info.getDisplayName().equals("Проверка на успешный логин с правильными данными")){
             homePage = new LoginPage().open()
+=======
+        if ((!info.getDisplayName().equals("Проверка на успешный логин с правильными данными"))
+        && (!info.getDisplayName().equals("Проверка на неуспешный логин с неправильными данными"))
+        && (!info.getDisplayName().equals("Проверка на неуспешный логин с неправильным логином"))
+        && (!info.getDisplayName().equals("Проверка на неуспешный логин с неправильным паролем"))
+        && (!info.getDisplayName().equals("Проверка на неуспешный логин с пустыми данными"))
+        && (!info.getDisplayName().equals("Проверка на неуспешный логин с пустым логином"))
+        && (!info.getDisplayName().equals("Проверка на неуспешный логин с пустым паролем"))){
+            homePage = new LoginPage()
+>>>>>>> homework-5
                     .enterEmailAndPassword(getLogin(), getPassword())
                     .submit();
         }
