@@ -1,1 +1,1 @@
-homeworks for Vk AQA course
+# UI-автотесты для сайта Одноклассники
