@@ -2,12 +2,13 @@ package tests;
 
 import org.junit.jupiter.api.*;
 import constants.LoginConstants;
+import static org.junit.jupiter.api.Assertions.*;
+import static com.codeborne.selenide.Condition.*;
 import pages.HomePage;
 import pages.LoginPage;
 import tags.LoginTag;
 
 public class TestLogin extends BaseTest{
-
     @Test
     @LoginTag
     @DisplayName("Проверка на успешный логин с правильными данными")
@@ -75,6 +76,5 @@ public class TestLogin extends BaseTest{
             loginPage.enterEmailAndPassword(getLogin(), LoginConstants.emptyPassword)
                     .submitWithError().checkErrorMessage();
         }
-
     }
 }

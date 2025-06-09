@@ -5,7 +5,7 @@ import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Condition.*;
 import org.openqa.selenium.support.ui.LoadableComponent;
-
+import static com.codeborne.selenide.Selenide.$x;
 
 public class LoginPage extends LoadableComponent< LoginPage > {
     private final SelenideElement emailField = $x("//input[@name='st.email']");
@@ -29,8 +29,10 @@ public class LoginPage extends LoadableComponent< LoginPage > {
     }
 
     public LoginPage enterEmailAndPassword(String email, String password){
-        emailField.setValue(email);
-        passwordField.setValue(password);
+        emailField.shouldBe(visible.because("На странице логина должно быть поле с вводом логина"))
+                .setValue(email);
+        passwordField.shouldBe(visible.because("На странице логина должно быть поле с вводом пароля"))
+                .setValue(password);
         return this;
     }
 
@@ -39,7 +41,6 @@ public class LoginPage extends LoadableComponent< LoginPage > {
                 .click();
         return new HomePage();
     }
-
     public LoginPage submitWithError(){
         submitButton.click();
         return this;
