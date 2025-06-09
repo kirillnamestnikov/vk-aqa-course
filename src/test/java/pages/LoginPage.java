@@ -4,7 +4,6 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Condition.*;
-import com.codeborne.selenide.Condition;
 
 public class LoginPage{
     private final SelenideElement emailField = $x("//input[@name='st.email']");
@@ -31,7 +30,7 @@ public class LoginPage{
         return new HomePage();
     }
 
-    public LoginPage waitForSubmit(){
+    public LoginPage submitWithError(){
         submitButton.click();
         return this;
     }
